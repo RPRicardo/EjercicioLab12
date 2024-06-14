@@ -76,7 +76,8 @@ class CajeroAutomatico:
 
 
 cajero = CajeroAutomatico()
-cajero.autenticar("1234")
+id_cuenta = input("Ingrese su ID de cuenta: )
+cajero.autenticar(id_cuenta)
 cajero.mostrar_saldo()
 cajero.deposito(2000)
 try:
