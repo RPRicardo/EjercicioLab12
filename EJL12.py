@@ -79,9 +79,15 @@ cajero = CajeroAutomatico()
 cajero.autenticar("1234")
 cajero.mostrar_saldo()
 cajero.deposito(2000)
-cajero.mostrar_saldo()
-cajero.transferencia(3000, "5678")
-cajero.mostrar_saldo()
-cajero.retiro(4000)
-cajero.mostrar_saldo()
-cajero.retiro(2000)  # Esto debería levantar una excepción
+try:
+    cajero.retiro(120000)  # Intento de retirar más efectivo del disponible en el cajero
+except SaldoEfectivoInsuficiente as e:
+    print(e)
+
+try:
+    cajero.transferencia(6000, "5678")  # Intento de transferir más del saldo disponible en la cuenta
+    cajero.mostrar_saldo()
+    cajero.retiro(2000)
+except SaldoCuentaInsuficiente as e:
+    print(e)
+
